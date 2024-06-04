@@ -10,7 +10,7 @@ cargo new rust-project ;
 
 <img style="height:100px;" src=".github/assets/book.png" >
 <img style="height:100px;" src=".github/assets/rust.gif" >
-<img style="height:100px;" src=".github/assets/crate.png" >
+<img style="height:100px;" src=".github/assets/cargo.png" >
 
 # <img style="width:50px;" src=".github/assets/pencil.png" /><span>&nbsp;</span> Learn Everything about JavaScript
 
