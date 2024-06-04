@@ -8,7 +8,7 @@ cargo new rust-project ;
 
 <div align="center" >
 
-<img style="height:100px;" src=".github/assets/book.png" >
+<img style="height:100px;" src=".github/assets/book.png" > &nbsp;
 <img style="height:100px;" src=".github/assets/rust.gif" >
 <img style="height:100px;" src=".github/assets/cargo.png" >
 
