@@ -1,20 +1,24 @@
-# Rust - Programming Language
-
-## Create a New Project
-
-```cmd
-cargo new rust-project ;
-```
-
 <div align="center" >
 
 <img style="height:100px;" src=".github/assets/book.png" > &nbsp;
 <img style="height:100px;" src=".github/assets/rust.gif" >
 <img style="height:100px;" src=".github/assets/cargo.png" >
 
-# <img style="width:50px;" src=".github/assets/pencil.png" /><span>&nbsp;</span> Learn Everything about JavaScript
+# <img style="width:50px;" src=".github/assets/pencil.png" /><span>&nbsp;</span> Learn Everything about RUST
 
 Comprehensive knowledge, learning resources, and practice materials for mastering JavaScript, from basic concepts to advanced techniques.
+</div>
+
+<br />
+
+<div align="center" >
+
+<h2> How to create a new Cargo project </h2>
+
+```cmd
+cargo new rust-project ;
+```
+
 </div>
 
 <br />
