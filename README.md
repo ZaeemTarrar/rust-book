@@ -6,7 +6,7 @@
 
 # <img style="width:50px;" src=".github/assets/pencil.png" /><span>&nbsp;</span> Learn Everything about RUST
 
-Comprehensive knowledge, learning resources, and practice materials for mastering JavaScript, from basic concepts to advanced techniques.
+Comprehensive knowledge, learning resources, and practice materials for mastering RUST Language, from basic concepts to advanced techniques.
 </div>
 
 <div align="center" >
@@ -27,7 +27,7 @@ cargo new rust-project ;
 
 <h2>Fundamentals</h2>
 
-In-depth exploration of core concepts and syntax of JavaScript, providing a strong foundation for more advanced topics.
+In-depth exploration of core concepts and syntax of RUST, providing a strong foundation for more advanced topics.
 
 </div>
 
@@ -55,7 +55,7 @@ Detailed implementation and usage of essential data structures, enabling efficie
 
 <h2>Object Oriented Programming</h2>
 
-The principles of object-oriented programming in JavaScript, including classes, inheritance, and encapsulation, to build modular and scalable applications.
+The principles of object-oriented programming in RUST, including classes, inheritance, and encapsulation, to build modular and scalable applications.
 
 </div>
 
