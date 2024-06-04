@@ -13,7 +13,7 @@ Comprehensive knowledge, learning resources, and practice materials for masterin
 
 <div align="center" >
 
-<h2> How to create a new Cargo project </h2>
+<h3> How to create a new Cargo project </h3>
 
 ```cmd
 cargo new rust-project ;
