@@ -38,12 +38,14 @@ fn main() {
     let f2: i64 = i64::MAX;
     let g: i128 = i128::MIN;
     let g2: i128 = i128::MAX;
+    let g3: isize = isize::MAX;
 
     println!("c: {},{}", c, c2);
     println!("d: {},{}", d, d2);
     println!("e: {},{}", e, e2);
     println!("f: {},{}", f, f2);
     println!("g: {},{}", g, g2);
+    println!("g3: {}", g3);
 
     // UnSigned Integer
     println!("\n[Unsigned Integer]");
@@ -57,8 +59,9 @@ fn main() {
     let k2: u64 = u64::MAX;
     let l: u128 = u128::MIN;
     let l2: u128 = u128::MAX;
-    let l3: u8 = b'\x00';
-    let l4: u32 = b'\x33'.into();
+    let l3: usize = usize::MAX;
+    let l4: u8 = b'\x00';
+    let l5: u32 = b'\x33'.into();
 
     println!("h: {},{}", h, h2);
     println!("i: {},{}", i, i2);
@@ -67,6 +70,7 @@ fn main() {
     println!("l: {},{}", l, l2);
     println!("l3: {}", l3);
     println!("l4: {}", l4);
+    println!("l5: {}", l5);
 
     // Float
     println!("\n[Float]");
@@ -81,7 +85,16 @@ fn main() {
     // Boolean
     println!("\n[Boolean]");
     let o: bool = true;
+    let o2: bool = 3 < 4;
+    let o3: bool = if 4 > 5 { true } else { false };
+    let o4: bool = match a {
+        1_000 => true,
+        _ => false,
+    };
     println!("o: {}", o);
+    println!("o2: {}", o2);
+    println!("o3: {}", o3);
+    println!("o4: {}", o4);
 
     // Character
     println!("\n[Character]");
@@ -92,11 +105,12 @@ fn main() {
     println!("\n[String]");
     let q: String = String::from("Hello World !");
     let r: &str = "Hello World !";
+    let r2: &[u8] = q.as_bytes();
     let mut s: String = String::new();
     s.push('A');
     s.push_str(" Okay");
     println!("q: {}", q);
-    println!("r: {}", r);
+    println!("r: {}, {:?}", r, r2);
     println!("s: {}", s);
 
     println!();
