@@ -31,13 +31,6 @@ In-depth exploration of core concepts and syntax of JavaScript, providing a stro
 
 </div>
 
-- Conditional Statements
-    - If Statement
-    - If else Statement
-    - If elseIf else Statement
-    - Switch Statement
-    - Ternary Statement
-
 <br />
 
 <div align="center" >
@@ -51,37 +44,8 @@ Detailed implementation and usage of essential data structures, enabling efficie
 </div>
 
 ### 🔖 Primitive Types
-- Boolean
-- Number
-    - Decimal
-        - Float
-        - Double
-    - Hex
-    - Octal
-    - Binary
-    - NaN
-    - Exponential
-- BigInt
-- String
-    - Character (Single Character String)
-- Symbol
 
 ### 🔖 Non-Primitive Types
-- Object
-    - Object (Regular Constructor)
-    - Class and Custom Class Object
-    - Literal Object
-    - Functional Object
-    - String
-    - Boolean
-    - Number
-    - Null
-    - Undefined
-- Array
-    - Nested Array
-- Function (Regular/Lambda)
-    - Generator
-    - Closure
 
 <br />
 
@@ -94,22 +58,6 @@ Detailed implementation and usage of essential data structures, enabling efficie
 The principles of object-oriented programming in JavaScript, including classes, inheritance, and encapsulation, to build modular and scalable applications.
 
 </div>
-
-- Classes / Objects
-- Methods / Prototypes
-- Access Modifiers
-    - Public
-    - Private (#)
-- Encapsulation
-- Inheritance
-    - Multi-Level Inheritance 
-    - Multiple Inheritance
-- Abstraction
-- Polymorphism
-- Mixins
-- Object Composition
-- Modules and Name-spacing
-- Error Handling
 
 <br />
 
