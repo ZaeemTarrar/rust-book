@@ -15,16 +15,19 @@ fn main() {
     const A: i32 = 128;
     println!("A: {}", A);
 
-    // Variables
+    // Immutable Variables
     println!("\n[Variable]");
     let a: i32 = 1_000;
     println!("a: {}", a);
 
-    // Mutable
+    // Mutable Variables
     println!("\n[Mutable Variable]");
     let mut b: i32 = 28;
     b = 54;
     println!("b: {}", b);
+
+    // Address
+    println!("[Address] a: ", &a);
 
     // Signed Integer
     println!("\n[Signed Integer]");
