@@ -9,7 +9,7 @@
 Comprehensive knowledge, learning resources, and practice materials for mastering RUST Language, from basic concepts to advanced techniques.
 </div>
 
-<div align="center" >
+<div align="left" >
 
 <h3> How to run rust file/files </h3>
 
