@@ -9,8 +9,6 @@
 Comprehensive knowledge, learning resources, and practice materials for mastering JavaScript, from basic concepts to advanced techniques.
 </div>
 
-<br />
-
 <div align="center" >
 
 <h3> How to create a new Cargo project </h3>
