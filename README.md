@@ -11,6 +11,16 @@ Comprehensive knowledge, learning resources, and practice materials for masterin
 
 <div align="center" >
 
+<h3> How to run rust file/files </h3>
+
+**NOTE:** Rust must be installed on the system, before compiling the code.
+
+```sh
+cd ./folder/ ;
+rustc ./file.rs ;
+./file ;
+```
+
 <h3> How to create a new Cargo project </h3>
 
 ```sh
