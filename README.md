@@ -13,7 +13,7 @@ Comprehensive knowledge, learning resources, and practice materials for masterin
 
 <h3> How to create a new Cargo project </h3>
 
-```cmd
+```sh
 cargo new rust-project ;
 ```
 
