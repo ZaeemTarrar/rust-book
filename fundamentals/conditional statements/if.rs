@@ -1,8 +1,10 @@
+#![allow(unused)]
+#![allow(unused_assignments)]
 /**
- * Application's Main Function 
+ * Application's Main Function
  * @author Zaeem Hassan Tarar
  * @since 04-2024
- * 
+ *
  * @topic If-Else Statement
  */
 fn main() {
@@ -28,13 +30,7 @@ fn main() {
     /**
      * Assigning/Saving result from If-Else Statement
      */
-    let result = if a > 5 {
-        1
-    } else if a < 5 {
-        2
-    } else {
-        3
-    };
+    let result = if a > 5 { 1 } else if a < 5 { 2 } else { 3 };
 
     /**
      * Display If-Else Assignment Result
