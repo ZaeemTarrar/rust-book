@@ -29,7 +29,7 @@ async fn main() {
     let ip = [127, 0, 0, 1];
     let port = 8080;
     let addr = SocketAddr::from((ip, port));
-    println!("->> Listening on: {:?}\n", addr);
+    println!("\n->> Listening on: {:?}\n", addr);
     let server = axum::Server::bind(&addr);
     server.serve(routes_all.into_make_service()).await.unwrap();
 }
