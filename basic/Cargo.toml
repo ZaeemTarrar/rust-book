@@ -1,0 +1,24 @@
+[package]
+name = "basic"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "attributes"
+path = "src/bin/fundamentals/attributes.rs"
+
+[[bin]]
+name = "input-output"
+path = "src/bin/fundamentals/io.rs"
+
+[[bin]]
+name = "constants"
+path = "src/bin/fundamentals/const.rs"
+
+[[bin]]
+name = "variables"
+path = "src/bin/fundamentals/var.rs"
+
+[dependencies]
+rand = "0.8.5"
+colored = "2.1.0"

@@ -71,6 +71,10 @@ use std::sync::{ Arc, Mutex };
 mod restaurant;
 use crate::restaurant::order_food;
 
+/// This is just for testing purposes
+/// ```rust
+/// println!("Hello World !");
+/// ```
 fn test1() {
     /*
         Unsigned Integer: u8, u16, u32, u64, u128, usize

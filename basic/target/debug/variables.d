@@ -1,0 +1,1 @@
+/Users/zaeemhassantarar/Multiverse/REAMNICS/Software\ Engineering/rust-book/basic/target/debug/variables: /Users/zaeemhassantarar/Multiverse/REAMNICS/Software\ Engineering/rust-book/basic/src/bin/fundamentals/var.rs

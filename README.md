@@ -27,6 +27,42 @@ rustc ./file.rs ;
 cargo new rust-project ;
 ```
 
+<h3> How to run a Cargo project </h3>
+
+```sh
+cargo run ;
+```
+
+<h3> How to create a new Cargo binary </h3>
+
+**Cargo.toml**
+
+```
+[[bin]]
+name = "binary1"
+path = "src/bin/binary1.rs"
+
+[[bin]]
+name = "binary2"
+path = "src/another_folder/binary2.rs"
+```
+
+<h3> How to run a Cargo binary </h3>
+
+```sh
+cargo run --bin binary1 ;
+```
+
+<h3> Cargo project documentation </h3>
+
+```sh
+cargo doc ;
+cargo doc --open ;
+
+cargo rustdoc ;
+rustdoc --help ;
+```
+
 </div>
 
 <br />

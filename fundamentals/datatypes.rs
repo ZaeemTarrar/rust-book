@@ -1,7 +1,6 @@
-#![allow(unused_assignments)]
 #![allow(unused)]
-
-use std::any::type_name;
+#![allow(unused_assignments)]
+#[allow(dead_code)]
 
 /**
  * Application's Main Function
@@ -25,9 +24,6 @@ fn main() {
     let mut b: i32 = 28;
     b = 54;
     println!("b: {}", b);
-
-    // Address
-    println!("[Address] a: ", &a);
 
     // Signed Integer
     println!("\n[Signed Integer]");
@@ -115,6 +111,33 @@ fn main() {
     println!("q: {}", q);
     println!("r: {}, {:?}", r, r2);
     println!("s: {}", s);
+
+    // Pointers & Addresses
+    // & => Gets the address of a variable
+    // * => Gets the Value available at the address stored in
+    //          a pointer variable
+    let mut t: u8 = 14; // Variable
+    // "p_t" is a reference to "t"
+    // this is pointer pointing value of t
+    let mut p_t = &mut t; // Pointer
+    // "p_t" is a reference to "t"
+    // this is copy of the value of t
+    let mut p_t2 = *p_t; // Variable
+    *p_t = 25;
+    p_t2 = 19;
+    // println!("t: {}", t);
+    println!("p_a: {}", p_t);
+    println!("p_a2: {}", p_t2);
+
+    // Function Pointers
+    fn add(x: i32, y: i32) -> i32 {
+        return x + y;
+    }
+    let sum = add; // Pointing a function
+    let result: i32 = add(3, 4);
+    println!("Result: {}", result);
+    let result2: i32 = sum(5, 4);
+    println!("Result2: {}", result2);
 
     println!();
 }

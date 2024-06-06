@@ -1,0 +1,1 @@
+/Users/zaeemhassantarar/Multiverse/REAMNICS/Software\ Engineering/rust-book/basic/target/debug/input-output: /Users/zaeemhassantarar/Multiverse/REAMNICS/Software\ Engineering/rust-book/basic/src/bin/fundamentals/io.rs
