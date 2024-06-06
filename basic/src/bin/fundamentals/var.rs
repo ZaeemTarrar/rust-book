@@ -2,6 +2,8 @@
 #![allow(unused)]
 
 use std::cmp::Ordering;
+use std::ops::Add;
+use std::collections::HashMap;
 
 use colored::Colorize;
 use rand::Rng;
@@ -71,7 +73,7 @@ fn main() {
     println!("S2: {}", e9);
     println!("S3: {}", e10);
 
-    // Vectors
+    // Vectors (List)
     let k1 = vec![1, 2, 3];
     // iterators can be collected into vectors
     let k2: Vec<i32> = (1..10).collect();
@@ -81,10 +83,19 @@ fn main() {
     let mut k3: Vec<char> = k3_chars.collect();
     k3.sort();
     k3.dedup(); // Delete duplicates
-    for char in k3 {
-        print!("{}", char);
+    for chr in k3 {
+        print!("{}", chr);
     }
-    println!();
+    let mut k5 = vec![1, 2, 3, 4, 5, 6];
+    // Mutable
+    for item in &mut k5 {
+        *item *= 2;
+    }
+    // Immutable
+    for item in &k5 {
+        print!("{}", item);
+    }
+    println!("VectorPop: {:?}", k5.pop());
     let mut k4 = Vec::new();
     k4.push(47);
     k4.push(13);
@@ -92,8 +103,8 @@ fn main() {
     let k4_first = &k4[0];
     let k4_second = &k4[1];
     match k4.get(1) {
-        Some(first) => print("Found: {}", first),
-        Some(13) => print("Found: {}", 13),
+        Some(first) => println!("Found: {}", first),
+        Some(13) => println!("Found: {}", 13),
         None => println!("No Matches"),
     }
 
@@ -243,4 +254,74 @@ fn main() {
     let today = Day::Monday;
     println!("Today [Enum]: {:?}", today);
     println!("Today is Weekend: {:?}", today.is_weekend());
+
+    // Functions
+    fn say_hello() {
+        println!("Hello !!!");
+    }
+    fn calculate(x: i32, y: i32) -> (i32, i32) {
+        // Returning Tuple
+        (x + 1, y + 2)
+    }
+    say_hello();
+    println!("Calculate: {:?}", calculate(5, 8));
+    let (v1, v2) = calculate(2, 11);
+    println!("Calculate: {},{}", v1, v2);
+
+    fn list_sum(list: &[i32]) -> i32 {
+        let mut sum: i32 = 0;
+        for &item in list.iter() {
+            sum += &item;
+        }
+        return sum;
+    }
+    let list: Vec<i32> = vec![1, 2, 3, 4, 5];
+    println!("ListSum: {}", list_sum(&list));
+
+    // Generics
+    fn get_sum_gen<T: Add<Output = T>>(x: T, y: T) -> T {
+        return x + y;
+    }
+    println!("GenSum: {}", get_sum_gen(3, 5));
+    println!("GenSum: {}", get_sum_gen(3.5, 5.4));
+
+    // Ownership -> Stack/Heap/Scope
+    let str1 = String::from("Hello");
+    let str2 = str1;
+    // Now, str1 does not exist as str2
+    // has borrowed its value
+    let str1 = String::from("Hello");
+    let str3 = str1.clone(); // value copied
+    fn print_str(st: String) {
+        println!("{}", st)
+    }
+    fn return_str(st: String) -> String {
+        println!("{}", st);
+        return st;
+    }
+    fn change_str(st: &mut String) {
+        st.push_str("Wow");
+        println!("{}", st);
+    }
+    print_str(str1.clone());
+    return_str(str1);
+    let mut str4 = String::from("Hello");
+    change_str(&mut str4);
+
+    // HashMap
+    let mut m = HashMap::new();
+    m.insert("p", "power");
+    m.insert("t", "tower");
+    m.insert("fl", "flower");
+    println!("m [Length]: {}", m.len());
+    for (k, v) in m.iter() {
+        println!("{}:{}", k, v);
+    }
+    if m.contains_key(&"fl") {
+        let val = m.get(&"fl");
+        match val {
+            Some(x) => println!("Found: {}", x),
+            None => println!("Nothing Found"),
+        }
+    }
 }
