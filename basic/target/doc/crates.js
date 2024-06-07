@@ -1,1 +1,0 @@
-window.ALL_CRATES = ["attributes","basic","cfg_if","colored","getrandom","input_output","lazy_static","libc","ppv_lite86","rand","rand_chacha","rand_core"];

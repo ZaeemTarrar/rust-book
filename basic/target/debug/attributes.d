@@ -1,1 +1,0 @@
-/Users/zaeemhassantarar/Multiverse/REAMNICS/Software\ Engineering/rust-book/basic/target/debug/attributes: /Users/zaeemhassantarar/Multiverse/REAMNICS/Software\ Engineering/rust-book/basic/src/bin/fundamentals/attributes.rs
