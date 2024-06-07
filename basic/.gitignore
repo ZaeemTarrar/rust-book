@@ -1,12 +1,12 @@
-# Compiled binary
 /target
+/target/
+/target/*
+/target/**/*
 
-# Rust artifacts
 Cargo.lock
 *.rlib
 *.rmeta
 
-# Generated files
 Cargo.toml.orig
 Cargo.toml.orig.orig
 Cargo.lock.orig
