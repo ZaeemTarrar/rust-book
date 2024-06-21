@@ -53,6 +53,10 @@ path = "src/another_folder/binary2.rs"
 cargo run --bin binary1 ;
 ```
 
+```sh
+cargo run -q --bin binary1 ;
+```
+
 <h3> Cargo project documentation </h3>
 
 ```sh

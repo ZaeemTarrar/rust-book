@@ -17,7 +17,7 @@ use std::fs::File;
 use std::collections::HashMap;
 use colored::Colorize;
 use std::{ error, io };
-use std::io::{ Write, BufReader, BufRead, ErrorKind };
+use std::io::{ Result, Write, BufReader, BufRead, ErrorKind };
 use rand::{ Error, Rng };
 use std::thread;
 use std::time::Duration;
@@ -27,6 +27,10 @@ use std::sync::{ Arc, Mutex };
 use std::any::type_name;
 use std::ops::{ Add, Mul, Div, Sub, Range, RangeToInclusive, RangeInclusive };
 use std::mem::size_of_val;
+use std::fmt::{ Debug, Display };
+use std::error::Error;
+use std::convert::{ From, TryFrom, TryInto, Into };
+use std::num::{ ParseIntError, ParseFloatError };
 // use crate::List::*;
 
 /// **Description:** Variables and Types
@@ -1128,7 +1132,7 @@ fn main() {
     }
 
     // Termination
-    process::exit(0);
+    // process::exit(0);
 
     // Associated Functions -> Fn inside Impl
     // Block connected to struct/enum
@@ -1256,10 +1260,26 @@ fn main() {
         }
     }
 
+    // Returning trait
+    // Dynamic Patch
+    fn random_animal(r: i32) -> Box<dyn Animal> {
+        if r < 10 {
+            return Box::new(Sheep {});
+        } else {
+            return Box::new(Cow {});
+        }
+    }
+
     // Derivable Traits -> Debug, Clone, Copy, PartialEq
     // Traits as Parameters with &impl reference
     // Where Clauses and Generics for Multi Trait Bounds
     // Return Types that Implement Traits
+    // Trait Objects -> Pointer
+    // Dynamic Trait Objects
+    // Dynamic Patch -> Flexible
+    // Static Patch -> Faster, Efficient
+    // Smart Pointer -> Box<T>
+    // Fat Smart Pointer -> Box<dyn T>
 
     // Attribute -> Helps Compare
     #[derive(PartialEq, PartialOrd)]
@@ -1282,4 +1302,285 @@ fn main() {
     let m1 = Centimeters(100.0);
     let f1 = Inches(12);
     let c2 = f1.to_centimeters() > m1;
+
+    // Type -> Alias
+    // Used to keep type standard for
+    // a particular piece of code
+    // Can be set in traits too
+    type MyInt = i32;
+    let x: MyInt = 3;
+    let y: MyInt = 5;
+    let z: MyInt = x + y;
+
+    // Operator Overloading
+    #[derive(Debug, PartialEq, PartialOrd)]
+    struct Foo;
+    #[derive(Debug, PartialEq, PartialOrd)]
+    struct Bar;
+    #[derive(Debug, PartialEq, PartialOrd)]
+    struct FooBar;
+    #[derive(Debug, PartialEq, PartialOrd)]
+    struct BarFoo;
+    impl Add<Bar> for Foo {
+        type Output = FooBar;
+        fn add(self, rhs: Bar) -> FooBar {
+            FooBar
+        }
+    }
+    impl Sub<Bar> for Foo {
+        type Output = FooBar;
+        fn sub(self, rhs: Bar) -> FooBar {
+            FooBar
+        }
+    }
+    assert_eq!(Foo + Bar, FooBar);
+    let x1 = Foo + Bar;
+
+    // Traits as Function Parameters
+    trait Summary {
+        fn summarize(&self) -> String;
+    }
+    struct Post {
+        title: String,
+    }
+    impl Summary for Post {
+        fn summarize(&self) -> String {
+            format!("Title: {}", self.title)
+        }
+    }
+    // 2 methods to pass traits
+    fn summary(a: &impl Summary) -> String {
+        return a.summarize();
+    }
+    fn summary2<T: Summary>(a: &T) -> String {
+        return a.summarize();
+    }
+    fn summary3<T>(a: &T) -> String where T: Summary {
+        return a.summarize();
+    }
+    let x1 = Post { title: String::from("Blog") };
+    summary(&x1);
+    summary2(&x1);
+    summary3(&x1);
+
+    // Box -> Smart pointer
+    // Used with types with unknown size
+    // Can be Cloned and used for pattern matching
+    // Has long life and owns allocation in heap
+    // Normal pointer just points to already existing
+    // memory allocation
+    // Smart pointer allocated/deallocates memory
+
+    // Overriding Debug and Compare Attribute Traits
+    struct Pair<T> {
+        x: T,
+        y: T,
+    }
+    impl<T> Pair<T> {
+        fn new(x: T, y: T) -> Self {
+            Self { x, y }
+        }
+    }
+    impl<T: Debug + PartialOrd> Pair<T> {
+        fn cmp_display(&self) {
+            if self.x > self.y {
+                println!("Larger is {:?}", self.x);
+            } else {
+                println!("Larger is {:?}", self.y);
+            }
+        }
+    }
+
+    // Unit Struct
+    #[derive(Debug, PartialEq, PartialOrd)]
+    struct Unit(i32);
+
+    let pair = Pair::new(Unit(1), Unit(3));
+    pair.cmp_display();
+    println!("Till");
+
+    // Associated Types with Traits
+
+    // Customizing Builtin
+    trait Draw {
+        fn draw(&self) -> String;
+    }
+    impl Draw for u8 {
+        fn draw(&self) -> String {
+            format!("u8: {}", *self)
+        }
+    }
+    let x1: u8 = 4;
+    let y1: u8 = 8;
+    println!("{}", y1.draw());
+    // Smart Pointer
+    fn draw_with_box(a: Box<dyn Draw>) -> String {
+        a.draw()
+    }
+    // Pointer
+    fn draw_with_ref(a: &dyn Draw) -> String {
+        a.draw()
+    }
+    draw_with_box(Box::new(x1));
+    draw_with_ref(&y1);
+
+    // Static Dispatch -> Generics
+    // Dynamic Dispatch -> Traits
+
+    // Downloaded Course Outline
+    // Ownership / Move/Borrow
+    // & mut self
+    // Impl / Method / Function
+    // Struct / Enum/Variants/match / Nested
+    // match/other / IfElse
+    // String &str
+    // Generics / Type Annotations
+    // struct to struct match
+    // .. Operator
+    // Option/Some/None/Match use when null possible
+    // Comments/Documentation
+    // Result / Ok/Err/"?" / Match - Err Possibility
+    // Result -> TryCatch Alt
+    // DB connection example
+    // Data structures / collections
+    // HashMap -> iter/keys/values (ref)
+    // If ternary
+    // Closures env/short-shot/passable
+    // Map Combinator / closures
+    // Map Comb... works with Options
+    // Map can use chains as well
+    // Map / Filter / Find
+    // Option Combinator / checks (ref)
+    // is_some, is_none, or_else, unwrap_or_else
+    // is_ok, is_err
+    // iter/map/filter/collect/
+    // count/last/min/max/take
+    // collect -> unwraps option
+    // Range
+    // If let
+    // While let
+    // Modules, inline
+    // Testing #[cfg(test)] #[test] cargo test
+    // assert, use crate::*
+    // External Crates
+    // ... chrono::prelude::*
+    // chrono lib
+    // lib/bin -> super/pub/as/crate/mod
+    // scope/block
+    // io -> buffer/stdio/stdout
+    // use * , destructure
+    // Result > Option
+    // cargo run / cargo check -q --bin
+    // expect works with result responses
+    // input parse into Result
+    // Trait / Impl / struct/enum/func
+    // Impl Default -> Alt to New, Init with Values
+    // Generics -> T: Trait1 + Trait2 -> structs/func
+    // Debug, Clone, Copy, etc
+    // T can be specified for nested struct as well
+    // Monomorphism
+    // Heterogenous Vectors -> Cannot mix
+    // Concrete/Generic Implementation
+    // Smart Pointer -> Box, *
+    // Trait Objects -> Static/Dynamic Dispatch
+    // Trait Object -> More Flexible Less Performant
+    // &dyn A = &B, Box<dyn A> = Box(B)
+    // Polymorphism
+    // .sum
+    // Ownership, Lifetime, Scope
+    // 'static data stays in memory
+    // until program terminates
+    // Name<'a>
+    // field: &'a DataType
+    // Lifetime -> Helps live more than scope
+    // or helps more than the borrowed data
+    // Lifetime helps keep ownership even after
+    // passing it on, until the scope ends
+    // Generic -> Lifetime
+    // Maps have Boxed args in Pipes, use *
+    // include_str!("abc.csv")
+    // str -> split,skip,nth
+    // iter -> .filter_map, .take, .zip
+    // zip -> returns merged tuple
+    // Anonymous Vector type -> Vec<_>
+    // Lifetimes are mostly used with &str
+    // Lifetime Fn Generics to centralize
+    // Custom Error -> Debug,Display,Error
+    // Impl Error,Display -> write!
+    // cargo.toml -> thiserror
+    // use thiserror::Error;
+    // Result<(), AbcError>
+    // #[derive(Debug,Error)]
+    // #[error("Abc Error")]
+    // #[error("Abc Error: {0}")]
+    // => Abc(#[from] AbcError) -> Nested
+    // cargo.toml -> DateTime,Duration,Utc
+    // and_then -> Result
+    // New Types -> Tuple Struct
+    // Type State
+    // If Fn returns already owned, crashes
+    // if self used instead of &self, then
+    // struct properties are removed
+    // #[rustfmt::skip] -> Formats rust messy code
+    // Can chain by returning self
+    // move -> passing ownership
+    // Match Guard Binding
+    // s @ 3..=8
+    // Person { age: 4, .. }
+    // Person { .. }
+    // s if (s == 4)
+    // Person { age } if (age == 5)
+    // Per( Prof { name, age: Teen } ) if (name == "Z")
+    // Arrays -> Fixed Size
+    // fn(a:[u8;3]), fn(a &[u8]), fn(a &mut [u8])
+    // slice -> as_slice(), &char[1..=9]
+    // vec.as_slice() = Arr
+    // Vector Array Combo with slices
+    // [first, .., last], [single], [], [one, two, ..], [.., last]
+    // [a, b], [single] if single == &5 || single != &7
+    // [first @ 1..=3, rest @ ..]
+    // Sequence Matters
+    // Array .chunks(2)
+    // Type Alias -> Rename existing types
+    // type Name = Type;
+    // Borrow <&'a str> , Generic<T>
+    // Type Conversion -> ::from, .into
+    // From<u8> Impl -> works for both into & from
+    // Auto Assign works with into
+    // from > into
+    // Result<(), Error> -> Err(2)? -> Resolves itself
+    // TryFrom/TryInto
+    // Impl TryFrom<i32> for Abc {
+    //      type Error = AbcError;
+    //      fn try_from(val: i32) -> Result<Self, Self::Error> {
+    //          Ok() / Err()
+    //      }
+    // }
+    // Network(#[from] NetworkError) -> Auto implements From
+    // #[cfg(test)] mod test
+    // #[test] fn abc()
+    // Cargo.toml -> dependencies -> thiserror = "*"
+    // &str -> .starts_with
+    // u8::from_str_radix
+    // Macros
+    // Int: Upper TypeCasting Works
+    // Int: Lower TypeCasting Works but with a Formula
+    // Formula: (SourceValue) - (TargetMax + 1)
+    // Formula Repeats until its within Type limits
+    // Float: TypeCasting drops decimals and filled with MinMax
+    // Closures:
+    // fn math(a:i32,b:i32,op:Box<dyn Fn(i32,i32)->i32>)->i32{}
+    // let add: Box<_> = Box::new(|a,b| a+b);
+    // dyn -> Data can vary in size
+    // move -> used before closures to move stuff from outside
+    // Threads -> thread.join -> executes fully
+    // let t1: JoinHandle<usize> = thread::spawn(|| {43})
+    // to_ascii_uppercase()
+    // .expect -> use with Result<(),Error>
+    // fmt::Display can set default Error display
+    // Channels -> Sender/Receiver
+    // crate -> crossbeam-channel::{bounded,unbounded}
+    // sender.send(), receiver.recv()
+    // receivers can be wrapped with threads
+    // receivers can be cloned to avoid ownership issues
 }
